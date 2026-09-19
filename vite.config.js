@@ -8,4 +8,12 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './testSetup/setup.js',
+  },
+  server: {
+    proxy: { '/api': 'http://localhost:3000' },
+  },
 })
