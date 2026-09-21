@@ -1,3 +1,5 @@
+import { redirect } from "react-router"
+
 export async function SignUpPost({request}) {
     //retrieve body data
     const body = await request.formData()
@@ -10,19 +12,16 @@ export async function SignUpPost({request}) {
         method: 'POST',
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(signUpDetails),
-        credentials: 'include', //send/receive the session cookie
+        credentials: 'include', // send/receive the session cookie
     })
 
     // handle the response
     if (!res.ok) {
-        const body = await res.json() // express-validator sends { errors: [...]}
-        console.log(body)
-        return body
+        const data = await res.json().catch(() => null)
+        return data ?? { errors: [{ msg: 'Something went wrong, please try again' }] }
     }
 
-
-    return redirect('/success')
+     
+    return redirect('/success');
     
-
-
 }

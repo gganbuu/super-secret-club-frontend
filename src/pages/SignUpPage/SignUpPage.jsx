@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import {useState } from 'react'
 import { useActionData } from 'react-router'
 
 import { Form } from 'react-router'
@@ -11,6 +11,8 @@ import { hasNumber } from '../../utils/hasNumber/hasNumber'
 
 export const SignUpPage = () => {
     const signUpData = useActionData();
+    const errors = signUpData?.errors ?? [];
+
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -27,16 +29,21 @@ export const SignUpPage = () => {
         setConfirmPassword(e.target.value)
     }
 
+
     
 
     return (
     <div className='flex flex-col min-h-screen'>
         <header className='h-[4rem]'>
+            <nav></nav>
         </header>
         <main className='flex-1 flex justify-center items-center'>
             <Form method="POST" className="flex flex-col justify-between w-xl min-h-[600px] border border-gray-400 rounded-xl py-[2rem] px-[2rem]">
                 <header className='flex flex-col items-center'>
                     <p className='flex text-3xl'>Sign Up</p>
+                    <p className='text-red-500 text-sm'>
+                        {errors.map(error => error.msg)}
+                    </p>
                 </header>
                 <main className='flex flex-col gap-3'>
                     <LabelInput type='text' 

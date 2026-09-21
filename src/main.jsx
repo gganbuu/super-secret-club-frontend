@@ -7,6 +7,9 @@ import SuccessPage from './pages/SuccessPage/SuccessPage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { SignUpPost } from './pages/SignUpPage/SignUpPost';
 
+import LoginPage from './pages/LoginPage/LoginPage';
+import { LoginPagePost } from './pages/LoginPage/LoginPagePost'
+
 import './index.css'
 
 
@@ -19,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/success",
     Component: SuccessPage,
+  },
+  {
+    path: "/login",
+    Component: LoginPage,
   },
 ]);
 
