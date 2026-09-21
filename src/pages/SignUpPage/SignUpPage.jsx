@@ -1,5 +1,6 @@
 import {useState } from 'react'
 import { useActionData } from 'react-router'
+import NavBar from '../../components/Navbar/NavBar'
 
 import { Form } from 'react-router'
 import LabelInput from '../../components/LabelInput/LabelInput'
@@ -33,10 +34,7 @@ export const SignUpPage = () => {
     
 
     return (
-    <div className='flex flex-col min-h-screen'>
-        <header className='h-[4rem]'>
-            <nav></nav>
-        </header>
+    <>
         <main className='flex-1 flex justify-center items-center'>
             <Form method="POST" className="flex flex-col justify-between w-xl min-h-[600px] border border-gray-400 rounded-xl py-[2rem] px-[2rem]">
                 <header className='flex flex-col items-center'>
@@ -88,9 +86,6 @@ export const SignUpPage = () => {
                 </footer>
             </Form>
         </main>
-
-        <footer className='h-[4rem]'>
-        </footer>
-    </div>
+    </>
   )
 }
