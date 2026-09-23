@@ -5,15 +5,15 @@ import { RouterProvider } from "react-router/dom";
 
 import Layout from './components/Layout/Layout';
 
-import SuccessPage from './pages/SuccessPage/SuccessPage';
+
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { SignUpPost } from './pages/SignUpPage/SignUpPost';
 
 import LoginPage from './pages/LoginPage/LoginPage';
 import { LoginPost } from './pages/LoginPage/LoginPost'
-
-
 import { LogOutPost } from './components/Navbar/LogOutPost'
+
+import CodePage from './pages/CodePage/CodePage';
 
 import './index.css'
 import { layoutLoader } from './components/Layout/layoutLoader';
