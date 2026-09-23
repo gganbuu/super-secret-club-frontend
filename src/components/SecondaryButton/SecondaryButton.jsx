@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SecondaryButton = ({name}) => {
+const SecondaryButton = ({name, type = "button"}) => {
   return (
-    <button className='cursor-pointer'>
+    <button type={type} className='cursor-pointer'>
         {name}
     </button>
   )

@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import LabelInput from '../../components/LabelInput/LabelInput'
-import { Form, useActionData} from 'react-router'
+import { Form, useActionData, Link} from 'react-router'
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton'
 import SecondaryButton from '../../components/SecondaryButton/SecondaryButton'
 
@@ -44,10 +44,16 @@ const LoginPage = () => {
                       required={true}
                       onChange={handlePassword}>
           </LabelInput>
-          <p className="">not part of the club yet? Sign Up</p>
+          <p className="self-center">not part of the club yet? 
+            <Link to="/signup">
+              <span className="text-blue-500"> Sign Up</span>
+            </Link>
+          </p>
       </main>
       <footer className='flex justify-between'>
-        <SecondaryButton type='button' name="Cancel" />
+        <Link to="/">
+          <SecondaryButton name="Cancel"/>
+        </Link>
         <PrimaryButton type='submit' name="Submit"/>
       </footer>
         </Form>

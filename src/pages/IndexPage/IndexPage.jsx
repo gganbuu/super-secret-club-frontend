@@ -6,7 +6,7 @@ const IndexPage = () => {
   return (
     <main className="flex-1 flex flex-col justify-center items-center gap-[1rem]">
       <h1 className="text-4xl font-bold">Super Secret Club</h1>
-      <Link>
+      <Link to="/messages">
         <PrimaryButton name="See messages" />
       </Link>
     </main>

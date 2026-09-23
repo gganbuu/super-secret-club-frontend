@@ -8,7 +8,8 @@ const NavBar = ({user}) => {
         {user
         ? 
         (
-        <nav className='max-w-7xl m-auto flex justify-end items-center gap-[1rem] p-[1rem]'>
+        <nav className='max-w-7xl m-auto flex justify-between items-center gap-[1rem] p-[1rem]'>
+            <Link to="/code"></Link>
             {user.username}
             <Form method='POST' action='/logout'>
                 <PrimaryButton type='submit' name='Logout'/>

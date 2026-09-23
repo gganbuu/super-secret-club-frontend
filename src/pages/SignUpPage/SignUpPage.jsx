@@ -1,5 +1,5 @@
 import {useState } from 'react'
-import { useActionData } from 'react-router'
+import { useActionData, Link } from 'react-router'
 import NavBar from '../../components/Navbar/NavBar'
 
 import { Form } from 'react-router'
@@ -81,7 +81,9 @@ export const SignUpPage = () => {
                     </LabelInput>
                 </main>
                 <footer className="flex justify-between">
-                    <SecondaryButton name="Cancel"/>
+                    <Link to="/">
+                        <SecondaryButton name="Cancel"/>
+                    </Link>
                     <PrimaryButton type='submit' name="Submit"/>
                 </footer>
             </Form>
