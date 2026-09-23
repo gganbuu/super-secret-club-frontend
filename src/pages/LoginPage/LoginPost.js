@@ -20,5 +20,5 @@ export const LoginPost =  async ({request}) => {
     }
 
      
-    return redirect('/success');
+    return redirect('/messages');
 }

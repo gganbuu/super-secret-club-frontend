@@ -17,6 +17,9 @@ import CodePage from './pages/CodePage/CodePage';
 
 import './index.css'
 import { layoutLoader } from './components/Layout/layoutLoader';
+import MessagesPage from './pages/MessagesPage/MessagesPage';
+import IndexPage from './pages/IndexPage/IndexPage'
+
 
 
 const router = createBrowserRouter([
@@ -25,6 +28,10 @@ const router = createBrowserRouter([
     element: <Layout/>,
     loader: layoutLoader,
     children: [
+      {
+        index: true,
+        Component: IndexPage,
+      },
       {
         path: 'signup',
         Component: SignUpPage,
@@ -38,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: 'logout',
         action: LogOutPost
+      },
+      {
+        path: 'messages',
+        Component: MessagesPage,
       },
       {
         path: 'code',
