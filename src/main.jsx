@@ -10,43 +10,43 @@ import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { SignUpPost } from './pages/SignUpPage/SignUpPost';
 
 import LoginPage from './pages/LoginPage/LoginPage';
-import { LoginPagePost } from './pages/LoginPage/LoginPost'
+import { LoginPost } from './pages/LoginPage/LoginPost'
+
+
+import { LogOutPost } from './components/Navbar/LogOutPost'
 
 import './index.css'
+import { layoutLoader } from './components/Layout/layoutLoader';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout/>,
+    loader: layoutLoader,
     children: [
       {
-        index: true,
+        path: 'signup',
         Component: SignUpPage,
+        action: SignUpPost,
       },
       {
         path: 'login',
         Component: LoginPage,
+        action: LoginPost,
+      },
+      {
+        path: 'logout',
+        action: LogOutPost
+      },
+      {
+        path: 'code',
+        Component: CodePage,
       }
     ]
   }
 ]);
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     Component: SignUpPage,
-//     action: SignUpPost
-//   },
-//   {
-//     path: "/success",
-//     Component: SuccessPage,
-//   },
-//   {
-//     path: "/login",
-//     Component: LoginPage,
-//   },
-// ]);
 
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={router}/>

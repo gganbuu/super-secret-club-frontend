@@ -36,7 +36,7 @@ export const SignUpPage = () => {
     return (
     <>
         <main className='flex-1 flex justify-center items-center'>
-            <Form method="POST" className="flex flex-col justify-between w-xl min-h-[600px] border border-gray-400 rounded-xl py-[2rem] px-[2rem]">
+            <Form method="POST" action="/signup" className="flex flex-col justify-between w-xl min-h-[600px] border border-gray-400 rounded-xl py-[2rem] px-[2rem]">
                 <header className='flex flex-col items-center'>
                     <p className='flex text-3xl'>Sign Up</p>
                     <p className='text-red-500 text-sm'>
