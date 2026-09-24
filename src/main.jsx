@@ -14,12 +14,14 @@ import { LoginPost } from './pages/LoginPage/LoginPost'
 import { LogOutPost } from './components/Navbar/LogOutPost'
 
 import CodePage from './pages/CodePage/CodePage';
+import { CodePost } from './pages/CodePage/CodePost';
 
 import './index.css'
 import { layoutLoader } from './components/Layout/layoutLoader';
 import MessagesPage from './pages/MessagesPage/MessagesPage';
 import IndexPage from './pages/IndexPage/IndexPage'
-
+import { allMessagesLoader } from './pages/MessagesPage/allMessagesLoader';
+import { newMessagePost } from './pages/MessagesPage/newMessagePost'
 
 
 const router = createBrowserRouter([
@@ -43,16 +45,18 @@ const router = createBrowserRouter([
         action: LoginPost,
       },
       {
-        path: 'logout',
-        action: LogOutPost
+        path: 'logout', action: LogOutPost,
       },
       {
         path: 'messages',
         Component: MessagesPage,
+        loader: allMessagesLoader,
+        action: newMessagePost
       },
       {
         path: 'code',
         Component: CodePage,
+        action: CodePost,
       }
     ]
   }

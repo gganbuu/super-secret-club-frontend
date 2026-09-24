@@ -8,12 +8,16 @@ const NavBar = ({user}) => {
         {user
         ? 
         (
-        <nav className='max-w-7xl m-auto flex justify-between items-center gap-[1rem] p-[1rem]'>
-            <Link to="/code"></Link>
-            {user.username}
-            <Form method='POST' action='/logout'>
-                <PrimaryButton type='submit' name='Logout'/>
-            </Form>
+        <nav className='max-w-7xl m-auto flex justify-between items-center p-[1rem]'>
+            <Link to="/code">
+                <PrimaryButton name='Enter code'/>
+            </Link>
+            <div className='flex flex-row items-center gap-[1rem]'>
+                {user.username}
+                <Form method='POST' action='/logout'>
+                    <PrimaryButton type='submit' name='Logout'/>
+                </Form>
+            </div>
         </nav>
         ) : (
         <nav className='max-w-7xl m-auto flex justify-end items-center gap-[1rem] p-[1rem]'>
