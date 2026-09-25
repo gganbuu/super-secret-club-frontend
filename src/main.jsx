@@ -28,6 +28,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout/>,
+    id: "root",
     loader: layoutLoader,
     children: [
       {

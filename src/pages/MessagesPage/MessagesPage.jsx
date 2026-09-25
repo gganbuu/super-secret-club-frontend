@@ -1,15 +1,19 @@
 import {useState} from 'react'
 import PrimaryButton from '../../components/PrimaryButton/PrimaryButton'
 import Modal from '../../components/Modal/Modal'
-import { Form, useLoaderData} from 'react-router'
+import { Form, useLoaderData, useRouteLoaderData} from 'react-router'
 import Message from '../../components/Message/Message'
 
 const MessagesPage = () => {
+  //loaders
+  const { messages } = useLoaderData()
+  const { user } = useRouteLoaderData('root')
+
+  //state
   const [modalState, setModalState] = useState(false)
   const toggleModal = () => {
     setModalState(!modalState)
   }
-  const { messages } = useLoaderData()
   
 
 
@@ -26,7 +30,7 @@ const MessagesPage = () => {
             })}
           </main>
           <footer className='flex justify-center'>
-            <PrimaryButton name="New message" onClick={toggleModal}/>
+            <PrimaryButton disabled={!user} name="New message" onClick={toggleModal}/>
           </footer>
         </section>
       </main>

@@ -18,10 +18,12 @@ const Message = ({message}) => {
                 {message.username}
             </p>
 
-            <div className='bg-blue-300 p-[1rem] gap-[1rem] rounded-xl flex flex-col'>
-                <h1 className='font-bold'>{message.title}</h1>
-                <p>{message.content}</p>
-                <p className='self-end'>{formattedDate}</p>
+            <div className='flex flex-col'>
+                <div className='bg-blue-300 p-[1rem] gap-[1rem] rounded-xl flex flex-col'>
+                    <h1 className='font-bold'>{message.title}</h1>
+                    <p>{message.content}</p>
+                </div>
+                <p className='self-end px-[1rem]'>{formattedDate}</p>
             </div>
         </section>
   )
