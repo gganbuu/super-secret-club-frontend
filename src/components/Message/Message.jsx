@@ -15,7 +15,7 @@ const Message = ({message}) => {
     return (
         <section className='flex flex-row gap-[1rem]'>
             <p className='self-end'>
-                {message.username}
+                {message.username || 'anon'}
             </p>
 
             <div className='flex flex-col'>

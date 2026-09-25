@@ -17,4 +17,4 @@ export async function newMessagePost({request}) {
     }
 
     return redirect('/messages')
-}
+}   

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LabelInput = ({type = 'text', name, label, placeholder = 'Value', required = false, children, onChange}) => {
+const LabelInput = ({type = 'text', name, label, placeholder = 'Value', required = false, children, onChange = () => {}}) => {
   return (
     <label htmlFor={name} className='flex gap-[1rem] flex-col'>
         <div>
