@@ -8,10 +8,16 @@ const CodePage = () => {
 
   return (
     <main className='flex-1 flex flex-col justify-center items-center'>
-      <Form method="POST" className='flex flex-col justify-between w-xl border border-gray-400 rounded-xl py-[2rem] px-[2rem]'>
-        <LabelInput label="Enter Code" name="secretcode" placeholder="the super secret code ..."/>
-        <p className='text-red-500'>{errors && errors.message}</p>
-        <PrimaryButton type="submit" name="Submit"/>
+      <Form method="POST" className='flex flex-col justify-between w-xl border border-gray-400 rounded-xl py-[2rem] px-[2rem] gap-[1rem]'>
+        <header>
+          <LabelInput label="Enter Code" name="secretcode" placeholder="the super secret code ..."/>
+        </header>
+        <main>
+          <p className='text-red-500'>{errors && errors.message}</p>
+        </main>
+        <footer className="flex justify-end">
+          <PrimaryButton type="submit" name="Submit"/>
+        </footer>
       </Form>
     </main>
   )

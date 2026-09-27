@@ -12,13 +12,21 @@ const MessagesPage = () => {
   const { user } = useRouteLoaderData('root')
 
   //state
-  const [modalState, setModalState] = useState(false)
-  const toggleModal = () => {
-    setModalState(!modalState)
+  const [newMessageModalState, setNewMessageModalState] = useState(false)
+  const toggleNewMessageModal = () => {
+    setNewMessageModalState(!newMessageModalState)
   }
+
+  const [editedMessageState, setEditMessageState] = useState(null)
+  const [editMessageModalState, setEditMessageModalState] = useState(false)
+  const toggleEditMessageModal = (message) => {
+    setEditMessageState(message)
+    setEditMessageModalState(!editMessageModalState)
+  }
+
   
 
-
+  
   return (
     <>
       <main className='flex-1 flex flex-col justify-center items-center'>
@@ -28,21 +36,21 @@ const MessagesPage = () => {
           </header>
           <main className='flex-1 flex flex-col gap-[1rem] overflow-y-auto'>
             {messages.length > 0 && messages.map(message => {
-              return <Message key={message.id} message={message} hidden={false}/>
+              return <Message key={message.id} message={message} hidden={false} onEdit={() => toggleEditMessageModal(message)}/>
             })}
           </main>
           <footer className='flex justify-center'>
-            <PrimaryButton disabled={!user} name="New message" onClick={toggleModal}/>
+            <PrimaryButton disabled={!user} name="New message" onClick={toggleNewMessageModal}/>
           </footer>
         </section>
       </main>
 
-      {modalState && (
+      {newMessageModalState && (
         <Modal>
           <Form method="POST" className="flex flex-col bg-white w-xl h-[600px] my-[10%] mx-auto rounded-xl p-[2rem] gap-[1rem]">
             <header className='flex items-center justify-between'>
               <h1 className="px-[1rem] font-bold">New message</h1>
-              <button className="px-[1rem] cursor-pointer" onClick={toggleModal} type="button" >X</button>
+              <button className="px-[1rem] cursor-pointer" onClick={toggleNewMessageModal} type="button" >X</button>
             </header>
             <main className='flex-1 flex flex-col gap-[1rem] min-h-0'>
               <p className='text-red-500 text-sm'>
@@ -52,11 +60,36 @@ const MessagesPage = () => {
               <textarea className="flex-1 w-full min-h-0 p-[1rem] box-border resize-none" placeholder="a new message..." name="content" id="content" required={true}></textarea>
             </main>
             <footer className="flex flex-row justify-end">
-              <PrimaryButton type="submit" name="Post"/>
+              <PrimaryButton type="submit" inputName="intent" inputValue="post" name="Post"/>
             </footer>
           </Form>
         </Modal>
       )}
+
+      {editMessageModalState && (
+        <Modal>
+          <Form method="POST" className="flex flex-col bg-white w-xl h-[600px] my-[10%] mx-auto rounded-xl p-[2rem] gap-[1rem]">
+            <header className='flex items-center justify-between'>
+              <h1 className="px-[1rem] font-bold">Edit message</h1>
+              <button className="px-[1rem] cursor-pointer" onClick={toggleEditMessageModal} type="button" >X</button>
+            </header>
+            <main className='flex-1 flex flex-col gap-[1rem] min-h-0'>
+              <p className='text-red-500 text-sm'>
+                {errors.map(error => error.msg)}
+              </p>
+              <input type="hidden" name="messageId" value={editedMessageState.id}/>
+              <input className="w-full px-[1rem] py-[0.8rem]"  type="text" placeholder="title" name="title" id="title" defaultValue={editedMessageState && editedMessageState.title} required={true}/>
+              <textarea className="flex-1 w-full min-h-0 p-[1rem] box-border resize-none" placeholder="a new message..." name="content" id="content" defaultValue={editedMessageState && editedMessageState.content} required={true}></textarea>
+            </main>
+            <footer className="flex flex-row justify-between">
+              <PrimaryButton type="submit" inputName="intent" inputValue="delete" formNoValidate={false} name="Delete"/>
+              <PrimaryButton type="submit" inputName="intent" inputValue="edit" name="Edit"/>
+            </footer>
+          </Form>
+        </Modal>        
+      )
+
+      }
     </>
   )
 }
